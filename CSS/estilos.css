@@ -1,0 +1,333 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;  
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;      
+}
+body{    
+    background-color: #101116;
+}
+.container{
+    max-width: 1300px;
+    margin: 0 auto;        
+}
+.menu{    
+    background-color: rgb(160, 167, 121);
+    max-width: 100%;    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;  
+    z-index: 1000;  
+    position: sticky;
+}
+.logo{
+    width: 4rem;    
+}
+.logo-content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-content h1 a{ 
+    font-size: 1.3rem;
+    padding-left: 15px;   
+    color: rgb(230, 230, 230);
+}
+.logo-content h1 a:hover{     
+    color: rgb(201, 231, 31);
+}
+.menu .navbar{
+    padding-top: 40px;
+}
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+.menu .navbar ul li a{
+    font-size: 1.1rem;      
+    padding: 20px;
+    color: rgb(230, 230, 230);
+    display: block;
+    text-transform: uppercase;
+}
+.menu .navbar ul li a:hover{    
+    color: rgb(201, 231, 31);
+}
+#menu{
+    display: none;
+}
+.menu-icono{
+    width: 25px;
+}
+.menu label{
+    cursor: pointer;
+    display: none;
+}
+.articulo{
+    display: flex;
+    align-items: center;
+    padding: 50px 0px;      
+}
+.texto-art{
+    width: 50%;
+    padding: 10px;
+    ;
+    /* padding-right: 5%; */
+    /* padding-left: 1%; */
+}
+h2{
+    text-align: center;
+    /* font-size: 3vw;  */
+    font-size: 4.5vh;        
+    color: rgb(201, 231, 31);
+}
+.texto-art a:hover{
+    color: rgb(201, 231, 31);
+}
+p{
+    padding-top: 30px;
+    text-align: justify;
+    /* font-size: 1.2vw; */
+    font-size: 2vh;
+    color: rgb(255, 255, 255);
+}
+.conteiner-ver{
+    display: flex;
+    justify-content: center;
+}
+.texto-art a{
+    background-color: rgb(160, 167, 121);
+    color: rgb(255, 255, 255);
+    display: flex;
+    padding: 10px;
+    border: 0px;
+    border-radius: 7%;    
+    margin: 30px 0px;
+    width: 20%;       
+    justify-content: center;      
+    font-size: 2vh;     
+}
+
+.img-art{
+    width: 50%;
+    padding: 10px;
+    /* padding-right: 1%; */
+}
+.img-art img{
+    border-radius: 7%;    
+    width: 100%;
+}
+main{
+    min-height: 50vh;
+    background-color: #252731;
+    padding: 50px 0px 50px 0px;
+}
+.tarjetas{    
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;    
+}
+.tarjeta{
+    background-color: rgb(160, 167, 121);
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    /* width: 20vw; */
+    width: 33vh;
+    /* min-width: 10vw; */
+    min-width: 16vh;
+    border-radius: 7%;    
+}
+.frutas{
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.5),rgba(0,0,0,0.7)),
+    url(/images/frutas.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.verduras{
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.5),rgba(0,0,0,0.7)),
+    url(/images/verduras.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.tarjetas h3{
+    color: rgb(255, 255, 255);
+    padding: 30px;     
+    border-radius: 7%;
+    text-align: center;
+    height: 20%;  
+    width: 100%;  
+    /* font-size: 2vw; */
+    font-size: 3vh;        
+}
+.tarjeta ul{
+    display: flex;
+    flex-direction: column;
+}
+.tarjeta .item{
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    border-radius: 7%;              
+    /* height: 6vw; */
+    height: 10vh;      
+}
+
+.tarjeta ul li h4{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 1.2vw; */
+    font-size: 2vh;    
+    color: rgb(255, 255, 255);   
+}
+.tarjeta img{    
+    border-radius: 7%;  
+    height: 100%;
+    width: 100%;
+    object-fit:cover;    
+    height: 10vh;
+    /* height: 6vw; */
+    height: 10vh;   
+}
+.tarjeta ul li:nth-child(odd){
+    background-color: rgba(189, 123, 189, 0.5)
+}
+.tarjeta ul li:nth-child(even){
+    background-color: rgba(120, 134, 212, 0.5)
+}
+
+.tarjeta a{
+    background-color: rgb(160, 167, 121);
+    color: rgb(255, 255, 255);
+    display: flex;
+    padding: 10px;
+    border: 0px;
+    border-radius: 7%;    
+    margin: 20px 0px;
+    width: 30%;    
+    align-items: center;
+    justify-content: center;    
+    /* font-size: 1.2vw;  */
+    font-size: 2vh;    
+}
+.tarjeta a:hover{
+    color: rgb(201, 231, 31);
+    /* background-color:#191a22; */
+    /* border: 2px solid ; */
+}
+section{
+    height: auto;
+}
+footer{    
+    background-color: rgb(160, 167, 121);    
+    padding: 0 10px;
+}
+footer .container{       
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-footer h4{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.nav-footer li{
+    margin: 15px;
+    text-align: center;
+}
+.nav-footer li a{
+    color: rgb(255, 255, 255); 
+    font-size: 2vh;   
+}
+
+.nav-footer a:hover{
+    color: rgb(201, 231, 31);
+}
+.redes{
+    display: flex;
+    flex-direction: column;
+}
+.redes li{
+    display: grid;
+    grid-template-columns: 1fr 2fr;          
+}
+.redes h4{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.redes a{
+    display: flex;    
+    align-items: center;   
+    justify-content: center; 
+    padding: 0px;
+    font-size: 2vh;
+    color: rgb(255, 255, 255);
+}
+.redes a:hover{
+    color: rgb(201, 231, 31);
+}
+.redes img{
+    height: 30px;
+    margin: 10px;
+    object-fit: contain;
+}
+
+@media(max-width: 1024px){
+    .img-art{
+        display: none;        
+    }
+    .articulo{        
+        justify-content: center;        
+    }
+    .texto-art{
+        width: 90%;        
+    }   
+}
+@media(max-width: 768px){   
+    .menu label{
+        display: initial;               
+    }    
+    .menu label img{
+        width: 30px;
+    }
+    .menu .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgb(160, 167, 121);
+        display: none;
+    }
+    .menu .navbar ul li{
+        width: 100%;
+        align-items: left;
+    }
+    #menu:checked ~ .navbar{
+        display: initial;
+    }
+
+    .tarjetas{         
+        flex-direction: column;
+        align-items: center;        
+    }
+    .frutas{
+        margin-bottom: 30px;
+    } 
+    .footer{
+        flex-direction: column;
+    } 
+    .footer p{
+        margin-bottom: 20px;
+    }
+    
+}

@@ -1,0 +1,12 @@
+.nosotros-back:nth-child(odd){
+    background-color: #252731;
+}
+.titulo-art{    
+    padding-top: 50px;
+}
+section h4{
+    text-align: center;
+    /* font-size: 3vw;  */
+    font-size: 3vh;       
+    color: rgb(201, 231, 31);
+}
