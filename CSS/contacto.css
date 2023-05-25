@@ -35,7 +35,7 @@ input, textarea{
 }
 .mapa{
 	min-height: 50vh;
-	min-width: 50vh;
+	/*min-width: 50vh;*/
 }	
 #mapa{
 	margin-top: 30px;			
