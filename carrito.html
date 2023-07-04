@@ -40,20 +40,20 @@
         <table>
             <thead>
                 <tr>
-                    <th align="center" style = "color: rgb(255, 255, 255);">Código</th>
-                    <th align="center" style = "color: rgb(255, 255, 255);">Descripción</th>
-                    <th align="center" style = "color: rgb(255, 255, 255);">Stock</th>
-                    <th align="center" style = "color: rgb(255, 255, 255);">Precio</th>
-                    <th align="center" style = "color: rgb(255, 255, 255);">Cantidad (kg)</th>
-                    <th align="center" style = "color: rgb(255, 255, 255);">Acción</th>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Cantidad (kg)</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="producto in productos" :key="producto.codigo">
-                    <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;">{{ producto.codigo }}</td>
-                    <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;">{{ producto.descripcion }}</td>
-                    <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;">{{ producto.cantidad }} kg</td>
-                    <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;">{{ producto.precio }}/kg</td>
+                    <td>{{ producto.codigo }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td>{{ producto.cantidad }} kg</td>
+                    <td>{{ producto.precio }}/kg</td>
                     <td><input type="number" id="cantidad" name="cantidad" required style="width: 130px;"><br></td>
                     <td>
                         <button @click="agregarAlCarrito(producto)">&nbsp;&nbsp;<b>+</b>&nbsp;&nbsp;</button>
@@ -66,27 +66,33 @@
 
         <div v-if="mostrarCarrito">
             <h2>Productos en el carrito:</h2>
-            <table>
+            <table id="prueba">
                 <thead>
                     <tr>
-                        <th align="center" style = "color: rgb(255, 255, 255); padding: 5px;">Código</th>
-                        <th align="center" style = "color: rgb(255, 255, 255); padding: 5px;">Descripción</th>
-                        <th align="center" style = "color: rgb(255, 255, 255); padding: 5px;">Cantidad</th>
-                        <th align="center" style = "color: rgb(255, 255, 255); padding: 5px;">Precio</th>
-                        <th align="center" style = "color: rgb(255, 255, 255); padding: 5px;">Total</th>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="item in carrito" :key="item.codigo">
-                        <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;">{{ item.codigo }}</td>
-                        <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;">{{ item.descripcion }}</td>
-                        <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;">{{ item.cantidad }} kg</td>
-                        <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;" v-if="item.cantidad >= 50">{{ item.precio * 0.75}}/kg</td>
-                        <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;" v-if="item.cantidad < 50">{{ item.precio}}/kg</td>
-                        <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;" v-if="item.cantidad >= 50">${{ item.precio * 0.75 * item.cantidad}}</td>
-                        <td align="center" style = "color: rgb(255, 255, 255); padding: 5px;" v-if="item.cantidad < 50">${{ item.precio * item.cantidad}}</td>
-                    </tr>
+                        <td>{{ item.codigo }}</td>
+                        <td>{{ item.descripcion }}</td>
+                        <td>{{ item.cantidad }} kg</td>
+                        <td v-if="item.cantidad >= 50">${{ item.precio * 0.75}}/kg</td>
+                        <td v-if="item.cantidad < 50">${{ item.precio}}/kg</td>
+                        <td v-if="item.cantidad >= 50">${{ item.precio * 0.75 * item.cantidad}}</td>
+                        <td v-if="item.cantidad < 50">${{ item.precio * item.cantidad}}</td>
+                    </tr>                    
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td style = "color: rgb(201, 231, 31); padding: 5px; font-size: 2.5vh;" colspan="3">Total a pagar</td>
+                        <td id="total" style = "color: rgb(201, 231, 31); padding: 5px; font-size: 2.5vh;" colspan="2">${{sumarTotales}}</td>                        
+                    </tr>
+                </tfoot>
             </table>
         </div>
 
@@ -105,8 +111,8 @@
     <script>
         //const URL = "http://127.0.0.1:5000/"
         const URL = "https://batymza.pythonanywhere.com/"
-
-        let num = 0
+        
+        let cant = 0
         function actualizar(){
         location.reload(true)
         }
@@ -116,7 +122,8 @@
                     productos: [],
                     mostrarCarrito: false,
                     carrito: [],
-                }
+                }      
+                
             },
             created() {
                 this.obtenerProductos()
@@ -135,7 +142,7 @@
                 },
                 
                 agregarAlCarrito(producto) {
-                    num = parseInt(document.getElementById("cantidad").value)                   
+                    cant = parseInt(document.getElementById("cantidad").value)                   
                     fetch(URL + 'carrito', {                        
                         method: 'POST',
                         headers: {
@@ -143,7 +150,7 @@
                         },
                         body: JSON.stringify({
                             codigo: producto.codigo,                                                             
-                            cantidad: num, // Agregamos una unidad al carrito
+                            cantidad: cant, // Agregamos una unidad al carrito
                         }),
                     })
                         .then(response => response.json())
@@ -156,7 +163,7 @@
                         })                                                                                           
                 },
                 restarDelCarrito(producto) {
-                    num = parseInt(document.getElementById("cantidad").value) 
+                    cant = parseInt(document.getElementById("cantidad").value) 
                     fetch(URL + 'carrito', {
                         method: 'DELETE',
                         headers: {
@@ -164,7 +171,7 @@
                         },
                         body: JSON.stringify({
                             codigo: producto.codigo,
-                            cantidad: num, // Restamos una unidad del carrito
+                            cantidad: cant, // Restamos una unidad del carrito
                         }),
                     })
                         .then(response => response.json())
@@ -188,8 +195,25 @@
                             alert('Error al obtener el carrito.')
                         })
                 },
+                
             },
-        })
+            
+            computed: {
+                sumarTotales() {
+                this.total = 0
+                for (item of this.carrito) {
+                if(item.cantidad >= 50){  
+                this.total += (item.precio * item.cantidad * 0.75)
+                }
+                if(item.cantidad < 50){  
+                this.total += (item.precio * item.cantidad)
+                }
+                }
+                return this.total
+                }            
+        }  
+        })                
+        
         app.mount('#app')
     </script>
 </body>

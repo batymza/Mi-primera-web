@@ -43,7 +43,11 @@ th{
     color: rgb(255, 255, 255);   
     padding: 5px;     
 }
-
+td, th{
+    text-align: center;
+    color: rgb(255, 255, 255); 
+    padding: 5px;
+}
 
 
 label {

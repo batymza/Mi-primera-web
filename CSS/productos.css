@@ -96,14 +96,13 @@ main{
 }
 .colbtn{
     margin-top: 25px;
-    border-radius: 7%;
+    border-radius: 5px;
     padding: 5px 25px;  
     background-color: rgb(160, 167, 121);     
 }
 a{
     color: rgb(255, 255, 255);
-	font-size: 2vh;
-	
+	font-size: 2vh;	
     text-align: center;  
 }
 a:hover{
