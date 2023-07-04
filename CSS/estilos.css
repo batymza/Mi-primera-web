@@ -41,8 +41,21 @@ body{
 .logo-content h1 a:hover{     
     color: rgb(201, 231, 31);
 }
+#admin{
+    font-size: 1.1rem;      
+    padding-top: 10px;
+    color: rgb(230, 230, 230);
+    /* display: block; */
+    display: flex;
+    justify-content: right;
+    text-transform: uppercase;
+    padding-right: 20px;
+}
+#admin:hover{
+    color: rgb(177, 55, 7);
+}
 .menu .navbar{
-    padding-top: 40px;
+    padding-top: 20px;
 }
 .menu .navbar ul li{
     position: relative;
