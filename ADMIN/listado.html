@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Productos</title>
+    <link rel="stylesheet" href= "/CSS/carrito.css">
+    <link rel="stylesheet" href="/CSS/estilos.css">
+</head>
+
+
+<body>
+    <header>
+        <div class="menu container">
+            <div class="logo-content">
+                <a href="/index.html"><img src="/images/logo_pagina.png" alt="logo" class="logo"></a>
+                <h1><a href="/index.html">De Campo</a></h1>
+            </div>
+            <input type="checkbox" id="menu">
+            <label for="menu"><img src="/images/menu.png" alt="" class="menu-icono"></label>
+            <div>                
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="/productos.html">Productos</a></li>
+                        <li><a href="/nosotros.html">Nosotros</a></li>
+                        <li><a href="/contacto.html">Contacto</a></li>                        
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <h2>Listado de Productos</h2>    
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio x Menor</th>
+                <th>Precio x Mayor</th>
+            </tr>
+        </thead>
+        <tbody id="tablaProductos">
+        </tbody>
+    </table>
+
+
+    <div class="contenedor-centrado">
+        <a href="admin.html">Volver</a>
+    </div>
+
+
+    <script>
+        //const URL = "http://127.0.0.1:5000/"
+        const URL = "https://batymza.pythonanywhere.com/"
+        // Realizamos la solicitud GET al servidor para obtener todos los productos
+        fetch(URL + 'productos')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json() // Parseamos la respuesta JSON
+                } else {
+                    throw new Error('Error al obtener los productos.')
+                }
+            })
+            .then(function (data) {
+                var tablaProductos = document.getElementById('tablaProductos')
+
+
+                // Iteramos sobre los productos y agregamos filas a la tabla
+                data.forEach(function (producto) {
+                    var fila = document.createElement('tr')
+                    fila.innerHTML = '<td align="center" style = "color: rgb(255, 255, 255);">' + producto.codigo + '</td>' +
+                        '<td style = "color: rgb(255, 255, 255);">' + producto.descripcion + '</td>' +
+                        '<td align="center" style = "color: rgb(255, 255, 255);">' + producto.cantidad + ' kg</td>' +                        
+                        '<td align="center" style = "color: rgb(255, 255, 255);">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '/Kg</td>' +                        
+                        '<td align="center" style = "color: rgb(255, 255, 255);">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio * 0.75 + '/Kg</td>'
+                    tablaProductos.appendChild(fila)
+                })
+            })
+            .catch(function (error) {
+                console.log('Error:', error)
+                alert('Error al obtener los productos.')
+            })
+    </script>
+</body>
+</html>
