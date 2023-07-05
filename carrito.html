@@ -94,6 +94,9 @@
                     </tr>
                 </tfoot>
             </table>
+            <div class="contenedor-centrado">
+                <button @click="ocultarCarrito">Ocultar carrito</button>
+            </div>
         </div>
 
 
@@ -103,7 +106,7 @@
 
 
         <div class="contenedor-centrado">
-            <a href="index.html" style="margin-bottom: 20px;">Menu principal</a>
+            <a href="index.html" style="margin: 20px 0px 50px 0px;">Menu principal</a>
         </div>
     </div>
 
@@ -189,6 +192,18 @@
                         .then(data => {
                             this.carrito = data
                             this.mostrarCarrito = true
+                        })
+                        .catch(error => {
+                            console.error('Error al obtener el carrito:', error)
+                            alert('Error al obtener el carrito.')
+                        })
+                },
+                ocultarCarrito() {
+                    fetch(URL + 'carrito')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.carrito = data
+                            this.mostrarCarrito = false
                         })
                         .catch(error => {
                             console.error('Error al obtener el carrito:', error)
