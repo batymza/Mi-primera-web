@@ -207,9 +207,7 @@ main{
     height: 100%;
     width: 100%;
     object-fit:cover;    
-    height: 10vh;
-    /* height: 6vw; */
-    height: 10vh;   
+    height: 10vh;    
 }
 .tarjeta ul li:nth-child(odd){
     background-color: rgba(189, 123, 189, 0.5)

@@ -40,7 +40,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>Código</th>
+                    <th>Código</th>                    
+                    <th>Producto</th> 
                     <th>Descripción</th>
                     <th>Stock</th>
                     <th>Precio</th>
@@ -51,10 +52,11 @@
             <tbody>
                 <tr v-for="producto in productos" :key="producto.codigo">
                     <td>{{ producto.codigo }}</td>
+                    <td><img :src="'images/'+producto.descripcion+'.jpg'" :alt="producto.descripcion"></td>
                     <td>{{ producto.descripcion }}</td>
                     <td>{{ producto.cantidad }} kg</td>
-                    <td>{{ producto.precio }}/kg</td>
-                    <td><input type="number" id="cantidad" name="cantidad" required style="width: 130px;"><br></td>
+                    <td>{{ producto.precio }}/kg</td>                    
+                    <td><input type="number" :id="'cantidad'+producto.codigo" name="cantidad" required style="width: 130px;"><br></td>
                     <td>
                         <button @click="agregarAlCarrito(producto)">&nbsp;&nbsp;<b>+</b>&nbsp;&nbsp;</button>
                         <button @click="restarDelCarrito(producto)">&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;</button>
@@ -70,6 +72,7 @@
                 <thead>
                     <tr>
                         <th>Código</th>
+                        <th>Producto</th>
                         <th>Descripción</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
@@ -78,7 +81,8 @@
                 </thead>
                 <tbody>
                     <tr v-for="item in carrito" :key="item.codigo">
-                        <td>{{ item.codigo }}</td>
+                        <td>{{ item.codigo }}</td>                        
+                        <td><img :src="'images/'+item.descripcion+'.jpg'" :alt="item.descripcion"></td>
                         <td>{{ item.descripcion }}</td>
                         <td>{{ item.cantidad }} kg</td>
                         <td v-if="item.cantidad >= 50">${{ item.precio * 0.75}}/kg</td>
@@ -89,7 +93,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td style = "color: rgb(201, 231, 31); padding: 5px; font-size: 2.5vh;" colspan="3">Total a pagar</td>
+                        <td style = "color: rgb(201, 231, 31); padding: 5px; font-size: 2.5vh;" colspan="4">Total a pagar</td>
                         <td id="total" style = "color: rgb(201, 231, 31); padding: 5px; font-size: 2.5vh;" colspan="2">${{sumarTotales}}</td>                        
                     </tr>
                 </tfoot>
@@ -115,10 +119,7 @@
         //const URL = "http://127.0.0.1:5000/"
         const URL = "https://batymza.pythonanywhere.com/"
         
-        let cant = 0
-        function actualizar(){
-        location.reload(true)
-        }
+        let cant = 0        
         const app = Vue.createApp({            
             data() {
                 return {
@@ -145,7 +146,8 @@
                 },
                 
                 agregarAlCarrito(producto) {
-                    cant = parseInt(document.getElementById("cantidad").value)                   
+                    nombreId= "cantidad" + parseInt(producto.codigo)
+                    cant = parseInt(document.getElementById(nombreId).value)   
                     fetch(URL + 'carrito', {                        
                         method: 'POST',
                         headers: {
@@ -166,7 +168,8 @@
                         })                                                                                           
                 },
                 restarDelCarrito(producto) {
-                    cant = parseInt(document.getElementById("cantidad").value) 
+                    nombreId= "cantidad" + parseInt(producto.codigo)
+                    cant = parseInt(document.getElementById(nombreId).value)  
                     fetch(URL + 'carrito', {
                         method: 'DELETE',
                         headers: {
@@ -225,7 +228,7 @@
                 }
                 }
                 return this.total
-                }            
+                }                       
         }  
         })                
         
