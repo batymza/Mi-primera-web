@@ -56,7 +56,7 @@
                     <td>{{ producto.descripcion }}</td>
                     <td>{{ producto.cantidad }} kg</td>
                     <td>{{ producto.precio }}/kg</td>                    
-                    <td><input type="number" :id="'cantidad'+producto.codigo" name="cantidad" required style="width: 130px;"><br></td>
+                    <td><input type="number" :id="producto.codigo" required style="width: 130px;"><br></td>
                     <td>
                         <button @click="agregarAlCarrito(producto)">&nbsp;&nbsp;<b>+</b>&nbsp;&nbsp;</button>
                         <button @click="restarDelCarrito(producto)">&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;</button>
@@ -146,7 +146,7 @@
                 },
                 
                 agregarAlCarrito(producto) {
-                    nombreId= "cantidad" + parseInt(producto.codigo)
+                    nombreId= producto.codigo
                     cant = parseInt(document.getElementById(nombreId).value)   
                     fetch(URL + 'carrito', {                        
                         method: 'POST',
@@ -168,7 +168,7 @@
                         })                                                                                           
                 },
                 restarDelCarrito(producto) {
-                    nombreId= "cantidad" + parseInt(producto.codigo)
+                    nombreId= producto.codigo
                     cant = parseInt(document.getElementById(nombreId).value)  
                     fetch(URL + 'carrito', {
                         method: 'DELETE',

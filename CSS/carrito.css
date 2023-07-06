@@ -22,11 +22,11 @@ h2{
 
 form {    
     max-width: 400px;
-    margin: 0 auto;
+    margin: 0px auto;
     padding: 20px;
-    /* background-color: white; */
-    /* border: 1px solid lightslategray; */
-    border-radius: 5px;
+    border:rgb(160, 167, 121) 2px solid;
+    border-radius: 10px;
+    margin-top: 30px;  
 }
 
 
@@ -53,7 +53,7 @@ td, th{
 label {
     display: block;
     margin-bottom: 5px;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);    
     /* font-size: 1.5vh; */
 }
 
@@ -61,7 +61,7 @@ label {
 input[type="text"],
 input[type="number"],
 textarea {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #cccccc;
@@ -83,7 +83,7 @@ input[type="submit"]:hover {
 }
 
 input[type="number"]{
-    width: 90%;
+    width: 100%;
     padding: 8px;
     font-size: 2vh;
     margin-bottom: 0px;
