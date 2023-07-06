@@ -125,10 +125,26 @@ a {
 a:hover {
     color: rgb(201, 231, 31);
 }
-img{    
+table img{    
     border-radius: 5px;  
     height: 100%;
     width: 100%;
     object-fit:cover;    
     height: 8vh;    
+}
+
+tfoot td{
+    color: rgb(201, 231, 31); 
+    padding: 10px; 
+    font-size: 3vh;
+    /* border:rgb(160, 167, 121) 2px solid; */
+    border-radius: 5px;
+    padding-top: 20px;  
+    
+}
+table{
+    margin-top: 20px;  
+    margin-bottom: 20px;  
+    border:rgb(160, 167, 121) 2px solid;
+    border-radius: 10px;
 }
